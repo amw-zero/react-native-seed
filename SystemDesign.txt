@@ -1,0 +1,45 @@
+Authentication |:
+----------------
+
+Actor: user
+
+Scenario: username & password authentication
+
+- user enters their username
+- user enters password
+
+- COMMAND: authenticate(username, password) -> result(authCredentials, systemError(authError))
+
+Scenario: SSO Authentication
+
+- user selects SSO provider (one of: FB, Google, etc.)
+- SSO provider sends authentication result
+- auth result verified
+
+
+
+       COMMAND
+Client =======> Server
+
+
+type sysErrType =
+  | HTTPError
+  | UnknownError
+  | Specific('a);
+
+type systemError('a) = {
+  sysErrType: sysErrType,
+  custom: option('a)
+};
+
+
+
+System:
+* Interaction
+  - 
+* Use Case
+  - sequence of interactions
+  - example: When updating a deal, its current activity can be viewed
+* Environment
+  - The state of the system
+* Interface
