@@ -1,0 +1,17 @@
+{
+  "name": "boilerplate",
+  "displayName": "boilerplate",
+  "expo": {
+    "name": "boilerplate",
+    "slug": "boilerplate",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
