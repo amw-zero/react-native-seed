@@ -2,8 +2,15 @@ let authState = {
   authenticated: false
 };
 
-function Authentication() {
-  return 70;
-}
+function CheckAuthentication() {
+  return authState;
+};
 
-export { Authentication,  authState };
+async function Authenticate(username, password) {
+  return {
+    authenticated: false,
+    error: "Invalid username or password"
+  };
+};
+
+export { CheckAuthentication, Authenticate };
