@@ -2,15 +2,12 @@ import * as React from 'react';
 import { Button, Platform, StyleSheet, Text, View } from 'react-native';
 import { CheckAuthentication, Authenticate } from './authentication/Authentication';
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+async function authService(email, password){ 
+  return { };
+};
 
 async function onPress(state, setState) {
-  console.log("onPress");
-  let authState = await Authenticate("test", "pw");
-  console.log("done");
+  let authState = await Authenticate("test", "pw", authService);
   setState(Object.assign({}, state, authState));
 };
 
@@ -19,7 +16,7 @@ function renderAuthenticated() {
 };
 
 function renderUnauthenticated(state, setState) {
-  return <Button title="clicky" onPress={() => onPress(state, setState)}></Button>;
+  return <Button title="Login" onPress={() => onPress(state, setState)}></Button>;
 };
 
 function renderError(state) {

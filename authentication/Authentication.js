@@ -1,15 +1,20 @@
-let authState = {
-  authenticated: false
-};
-
 function CheckAuthentication() {
-  return authState;
+  return {
+    authenticated: false
+  };
 };
 
-async function Authenticate(username, password) {
+async function Authenticate(username, password, authService) {
+  let result = await authService(username, password);
+  if (result.error) {
+    return {
+      authenticated: false,
+      error: result.error
+    };
+  } 
+    
   return {
-    authenticated: false,
-    error: "Invalid username or password"
+    authenticated: true
   };
 };
 
