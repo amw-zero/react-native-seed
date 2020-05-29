@@ -2,12 +2,17 @@ import * as React from 'react';
 import { Button, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import { CheckAuthentication, Authenticate } from './authentication/Authentication';
 
-async function authService(email, password){ 
-  if (email == "test@email.com" && password == "Test1234") {
-    return {};
-  } else {
-    return { error: "Invalid credentials" };
-  }
+async function authService(email, password){
+  let response = await fetch("http://localhost:4567/auth", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
+  });
+
+  return response.json();
 };
 
 async function onPress(username, password, setState) {
